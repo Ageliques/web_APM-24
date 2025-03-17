@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display</title>
+    <style>
+        .inline {
+            display: inline;
+            width: 100px; /* Не работает */
+            height: 100px; /* Не работает */
+            background-color: lightblue;
+        }
+        .block {
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+        }
+        .inline-block {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="inline">Inline</div>
+    <div class="inline">Inline</div>
+    <div class="block">Block</div>
+    <div class="block">Block</div>
+    <div class="inline-block">Inline-Block</div>
+    <div class="inline-block">Inline-Block</div>
+</body>
+</html>

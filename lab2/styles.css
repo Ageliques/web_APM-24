@@ -1,0 +1,17 @@
+/* Стиль для тега <h1> */
+h1 {
+    color: rgb(16, 16, 126);
+    font-size: 24px;
+}
+
+/* Стиль для класса .text */
+.text {
+    color: rgb(16, 51, 16);
+    font-style: italic;
+}
+
+/* Стиль для идентификатора #special */
+#special {
+    color: rgb(209, 73, 73);
+    font-weight: bold;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каскадирование и наследование</title>
+    <style>
+        p {
+            color: blue;
+        }
+
+        .text {
+            color: green;
+        }
+
+        div {
+            color: pink;
+            font-family: Arial, sans-serif;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <p>Просто p с синим цветом и размером 35</p>
+    <p class="text">Просто .text с зеленым цветом и размером 35</p>
+    <div>
+        <p>Этот p в классе div, цвет - синий (правило 1), но наследует шрифт и размер от div.</p>
+        <p class="text">Этот .text в классе div, цвет - зеленый (правило 2 переопределяет правило 1), но наследует шрифт и размер от div.</p>
+    </div>
+</body>
+</html>

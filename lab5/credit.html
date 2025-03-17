@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор вкладов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            display: flex;
+            gap: 20px; /* Расстояние между левой и правой частями */
+        }
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Расстояние между полями */
+        }
+        .inputs label {
+            font-weight: bold;
+        }
+        .inputs select, .inputs input {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .inputs button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .inputs button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            width: 300px;
+            background-color: #fff;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <!-- Левая часть: поля ввода -->
+        <div class="inputs">
+            <label for="depositType">Вид вклада:</label>
+            <select id="depositType">
+                <option value="">Выберите вид вклада</option>
+                <option value="Пополняемый">Пополняемый</option>
+                <option value="Срочный">Срочный</option>
+            </select>
+
+            <label for="depositTerm">Срок вклада:</label>
+            <select id="depositTerm" disabled>
+                <option value="">Сначала выберите вид вклада</option>
+            </select>
+
+            <label for="amount">Сумма вклада (руб):</label>
+            <input type="number" id="amount" placeholder="Введите сумму" min="1">
+
+            <button id="calculateButton">Рассчитать</button>
+
+            <!-- Сообщение об ошибке -->
+            <div id="error" class="error"></div>
+        </div>
+
+        <!-- Правая часть: поле вывода -->
+        <div class="output" id="output">
+            Результат будет отображен здесь.
+        </div>
+    </div>
+
+    <script>
+        // Данные по вкладам
+        const depositData = {
+            "Пополняемый": {
+                "6 месяцев": 20,
+                "1 год": 22,
+                "1,5 года": 15,
+                "2 года": 10
+            },
+            "Срочный": {
+                "3 месяца": 20,
+                "6 месяцев": 22,
+                "9 месяцев": 23,
+                "1 год": 24,
+                "1,5 года": 18,
+                "2 года": 15
+            }
+        };
+
+        // Элементы DOM
+        const depositType = document.getElementById('depositType');
+        const depositTerm = document.getElementById('depositTerm');
+        const amountInput = document.getElementById('amount');
+        const calculateButton = document.getElementById('calculateButton');
+        const outputDiv = document.getElementById('output');
+        const errorDiv = document.getElementById('error');
+
+        // Обновление списка сроков при выборе вида вклада
+        depositType.addEventListener('change', () => {
+            const selectedType = depositType.value;
+
+            if (selectedType) {
+                depositTerm.disabled = false;
+                depositTerm.innerHTML = '<option value="">Выберите срок</option>';
+
+                for (const term in depositData[selectedType]) {
+                    depositTerm.innerHTML += `<option value="${term}">${term}</option>`;
+                }
+            } else {
+                depositTerm.disabled = true;
+                depositTerm.innerHTML = '<option value="">Сначала выберите вид вклада</option>';
+            }
+        });
+
+        // Расчет вклада
+        calculateButton.addEventListener('click', () => {
+            const selectedType = depositType.value;
+            const selectedTerm = depositTerm.value;
+            const amount = parseFloat(amountInput.value);
+
+            // Валидация
+            if (!selectedType || !selectedTerm || isNaN(amount) || amount <= 0) {
+                errorDiv.textContent = 'Пожалуйста, заполните все поля корректно.';
+                outputDiv.textContent = 'Результат будет отображен здесь.';
+                return;
+            }
+
+            errorDiv.textContent = '';
+
+            // Расчет итоговой суммы
+            const rate = depositData[selectedType][selectedTerm];
+            const years = parseFloat(selectedTerm); // Преобразуем срок в годах
+            const finalAmount = amount + (amount * rate / 100 * years);
+
+            // Вывод результата
+            outputDiv.textContent = `
+                Вид вклада: ${selectedType},
+                Срок: ${selectedTerm},
+                Начальная сумма: ${amount.toFixed(2)} руб,
+                Итоговая сумма: ${finalAmount.toFixed(2)} руб.
+            `;
+        });
+    </script>
+</body>
+</html>

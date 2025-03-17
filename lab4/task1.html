@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример фона и ссылок</title>
+    <style>
+
+        .block {
+            width: 300px;
+            height: 200px;
+            padding: 20px;
+            border: 2px solid #333;
+            background-color: #f0f0f0; 
+            background-image: url('https://avatars.mds.yandex.net/i?id=ab26ed77408d6f6c97996c697ce118494710e1b7-5427734-images-thumbs&n=13'); 
+        }
+
+        .block:hover {
+            background-color: #c0c0c0; 
+            background-image: url('https://avatars.mds.yandex.net/i?id=39db6c661a4f1d4dba5658902b75e514046bf824-3826599-images-thumbs&n=13'); 
+        }
+
+        a {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            color: white;
+            background-color: #649ad3; /* Цвет фона по умолчанию */
+            text-decoration: none;
+            transition: background-color 0.3s ease; /* Плавное изменение цвета */
+        }
+
+        a:hover {
+            background-color: #003d7e; /* Новый цвет фона */
+        }
+    </style>
+</head>
+<body>
+    <div class="block">
+        Наведите на меня, чтобы изменить фон!
+    </div>
+
+    <a href="#">Наведите на меня</a>
+</body>
+</html>

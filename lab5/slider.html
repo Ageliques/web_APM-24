@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>Слайдер_MLBB</title>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+<body>
+    <style>
+        html,
+        body{
+          height: 100%;
+          font-size: 15px;
+        }
+     .swiper-slide{
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+     .swiper-button-next, .swiper-rtl .swiper-button-prev{
+          right: 140px !important; 
+          left: auto;
+        }
+        .swiper-button-prev, .swiper-rtl .swiper-button-next{
+          left: 140px !important; 
+          right: auto;
+        }
+    
+      </style>
+    <div class="swiper-container">
+    <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="https://avatars.mds.yandex.net/i?id=8cd5419688f24b0f32f51174d455fa47653d078e-4290450-images-thumbs&n=13" width="800" height="500"/></div>
+    <div class="swiper-slide"><img src="https://avatars.mds.yandex.net/i?id=d98b3def0a0973da1fc1c8069ffbe0e2b67b49ba-10917150-images-thumbs&n=13" width="800" height="500"/></div>
+    <div class="swiper-slide"><img src="https://avatars.mds.yandex.net/i?id=4b56ad98c052ccf56ab2bc55a90646495ae0e07c-10414208-images-thumbs&n=13" width="800" height="500"/></div>
+	<div class="swiper-slide"><img src="https://avatars.mds.yandex.net/i?id=f7dc6a9c8c50d58cdaad5ed7f74097d416e7d547-10868190-images-thumbs&n=13" width="800" height="500"/></div>
+    <div class="swiper-slide"><img src="https://avatars.mds.yandex.net/i?id=f111659758b2663431d6eff5bc713b4d9726fdb436131c56-11465590-images-thumbs&n=13" width="800" height="500"/></div>
+    </div>
+    <div class="swiper-pagination"></div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+      },
+      mousewheel: true,
+      keyboard: true,
+    });
+    </script>
+    </body>
+</html>
